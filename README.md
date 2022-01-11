@@ -5,7 +5,8 @@
 <br /> &nbsp;&nbsp;&nbsp;
 [Italy](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/Italy%20Parameter%20Estimation)
 <br /> &nbsp;&nbsp;&nbsp;
-Used to generate parameter fitting results for Italy from Days 1-22
+Used to generate parameter fitting results for Italy from Days 1-22 (February 20, 2020 - March 12, 2020)
+<br /> &nbsp;&nbsp;
 
 
 **2. BC Parameter Estimation**
@@ -20,3 +21,6 @@ Used to generate parameter fitting results for BC from Days 1-60 (January 30, 20
 Used to generate parameter fitting results for BC from Days 60-109 (March 31, 2020 - May 9, 2020)
 <br /> &nbsp;&nbsp;
 <br /> &nbsp;&nbsp;
+
+
+## How to run Multistart
