@@ -31,7 +31,6 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 <br /> &nbsp;&nbsp;&nbsp;
 *COVID_MultiStart(NoStartPoints, Tstart, Tend, place, testnumber)*
 <br /> &nbsp;&nbsp;&nbsp;
-<br /> &nbsp;&nbsp;&nbsp;
 - **NoStartPoints**: The number of starting points you want MultiStart to use, the more you use the longer the code will take to run. 
 <br /> &nbsp;&nbsp;&nbsp;
 - **Tstart**: Day of data you want to start fitting the model to 
