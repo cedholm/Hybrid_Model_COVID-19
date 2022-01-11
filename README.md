@@ -29,8 +29,8 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 
 **Inputs**
 <br /> &nbsp;&nbsp;&nbsp;
-COVID_MultiStart(NoStartPoints, Tstart, Tend, place, testnumber) 
+*COVID_MultiStart(NoStartPoints, Tstart, Tend, place, testnumber)*
 <br /> &nbsp;&nbsp;&nbsp;
-NoStartPoints: The number of starting points you want Multistart to use, the more you use the longer the code will take to run. Start with a low value and increase when you see convergence. 
-
+<br /> &nbsp;&nbsp;&nbsp;
+NoStartPoints: The number of starting points you want Multistart to use, the more you use the longer the code will take to run. 
 
