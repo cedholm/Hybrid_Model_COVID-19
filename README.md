@@ -1,7 +1,7 @@
 # Hybrid_Model_COVID-19
 
 ## MATLAB code contents
-**1. Italy parameter estimation**
+### 1. Italy parameter estimation ### 
 <br /> &nbsp;&nbsp;&nbsp;
 [Italy Days 1-22](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/Italy%20Parameter%20Estimation)
 <br /> &nbsp;&nbsp;&nbsp;
@@ -9,7 +9,7 @@ Used to generate parameter fitting results for Italy from Days 1-22 (February 20
 <br /> &nbsp;&nbsp;
 
 
-**2. BC parameter estimation**
+### 2. BC parameter estimation ### 
 <br /> &nbsp;&nbsp;&nbsp;
 [BC Phase I](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/BC%20Parameter%20Estimation/Phase%201)
 <br /> &nbsp;&nbsp;
