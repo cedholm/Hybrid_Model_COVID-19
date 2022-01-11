@@ -42,7 +42,6 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 <br /> &nbsp;&nbsp;&nbsp;
 
 ### Outputs ###
-<br /> &nbsp;&nbsp;&nbsp;
 - **COVIDParameters**: a matrix of all the possible local minimum parameter values, size will relate to the NoStartPoints
 - **fvalues**: all the objective functional minimum values that correspond to the COVIDParameters
 - **ExitFlags**: 
