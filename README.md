@@ -31,7 +31,6 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 <br /> &nbsp;&nbsp;&nbsp;
 *COVID_MultiStart(NoStartPoints, Tstart, Tend, place, testnumber)*
 <br /> &nbsp;&nbsp;&nbsp;
-
 <br /> &nbsp;&nbsp;&nbsp;
 **NoStartPoints**: The number of starting points you want MultiStart to use, the more you use the longer the code will take to run. 
 <br /> &nbsp;&nbsp;&nbsp;
@@ -44,6 +43,5 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 **Testnumber**: Test number recorded on all outputs to help you keep track of then number of runs
 <br /> &nbsp;&nbsp;&nbsp;
 <br /> &nbsp;&nbsp;&nbsp;
-
 *Note: Ensure the corresponding excel data file is in the same folder as both COVID_MultiStart.m and COVID_model.m.*
 <br /> &nbsp;&nbsp;&nbsp;
