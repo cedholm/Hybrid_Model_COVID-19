@@ -82,10 +82,6 @@ dt = .0005;            %%%Prob<1, if Check NOT equal zero, then make smaller tim
 sdt = sqrt(dt);
 ts = time/dt;
 
-% What is considered an Outbreak? Maybe based on ICU capacity, maybe based
-% on what we actually considered outbreak in Wuhan, etc., can look at the
-% impact of threshold on how quickly we go from yellow to red lockdown
-% zones
 outbreak = 50;
 
 % Threshold number of E+A+I individuals that requires use of SDE
