@@ -18,7 +18,7 @@ Used to generate parameter fitting results for BC from Days 1-60 (January 30, 20
 <br /> &nbsp;&nbsp;
 [BC Phase II](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/BC%20Parameter%20Estimation/Phase%202)
 <br /> &nbsp;&nbsp;
-Used to generate parameter fitting results for BC from Days 60-109 (March 31, 2020 - May 9, 2020)
+Used to generate parameter fitting results for BC from Days 60-109 (March 31, 2020 - May 19, 2020)
 <br /> &nbsp;&nbsp;
 <br /> &nbsp;&nbsp;
 
@@ -46,5 +46,4 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 - **fvalues**: all the objective functional minimum values that correspond to the COVIDParameters
 - **ExitFlags**: 
 -
-### Interactive parts ###
-<br /> &nbsp;&nbsp;&nbsp;
+
