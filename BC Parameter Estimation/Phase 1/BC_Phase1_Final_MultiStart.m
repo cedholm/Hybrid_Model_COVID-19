@@ -33,10 +33,6 @@ function [COVIDParameters,fvalues,ExitFlags, endpoints] = BC_Phase1_Final_MultiS
 LowerBounds=[0.001, 0.001, 0.1, 0.2];
 UpperBounds = [2.5, 2.5, 0.9, 0.45];
 
-%Best fit for 1-46
-%LowerBounds=[0.1, 0.01, 0.01, 0.000000001, 0.1, 0.1, 1/21];
-%UpperBounds = [2, 0.9, 0.9, 0.5, 0.5, 0.45, 1/14];
-
 
 xstart=.5*(LowerBounds+UpperBounds); %start in the middle
 
