@@ -7,11 +7,6 @@
 %SEIR COVID19 Model
 %Computes probability of Extinction
 
-%Edited Feb 15 by Karen
-%Changed R0 equation to Rttt equation (Variable name still R0)
-%Dragged the Rttt equation down after parameter get updated timesteps
-%right before the code for NHP <-> SDE 
-
 clear all
 clc;
 close all
@@ -28,15 +23,6 @@ InitialCondition = 1;
 
 % Fit parameters
 global fraction_silent fraction_symp R0_fit b1_0 b2_0 b3_0 mI2 aa1 aa2 dd1 dd2 g2 POPULATION N_0 N1_0 N2_0 R0 r1 r2 r3 sigma1 sigma2 sigma3 time dt
-
-% Phase 1 Parameters
-% fraction_silent = 0.675469407;          %fraction of individuals that are silent spreaders
-% fraction_symp = 1-fraction_silent;      %fraction of individuals that are symptomatic spreaders
-% R0_fit = 2.755096228;                   %basic reproduction number
-% b1_0 = 0.600106951;                     %transmission rate for SilentSpreader Asymptomatic
-% b2_0 = 0.519333416;                     %transmission rate for SymptomaticSpreader Asymptomatic (Presymptomatic)
-% b3_0 = 0.3;                             %transmission rate for SymptomaticSpreader Infectious
-% mI2 = 0.004;                            %disease-induced mortality rate for infected SymptomaticSpreader - COVID-19 -- region dependent
 
 % Phase 2 Parameters
 fraction_silent = 0.937944626;          %fraction of individuals that are silent spreaders
@@ -71,12 +57,6 @@ N2_0 = round((1-fraction_silent)*N_0);             % Symptomatic spreaders at t0
 frac_ICU = 0.0132;
 BC_ICU_beds = 313;
 
-%Nika’s original R0 eqn
-%R0 = b1_0*(N1_0)/(dd1*(N_0))+b1_0*(N2_0)/(dd2*(N_0))+b2_0*(N2_0)/((g2+mI2)*(N_0));
-
-%From Phase 1 Final Multistart
-%R0=(beta1*N10)/(delta1*N)+(beta2*N20)/(delta2*N)+(beta3*N20)/((gamma2+mu2)*N);
-
 % Updated R0 for COVID Phase 1 (Please check!)
 R0 = b1_0*(N1_0)/(dd1*(N_0))+b2_0*(N2_0)/(dd2*(N_0))+b3_0*(N2_0)/((g2+mI2)*(N_0));
 
@@ -103,10 +83,6 @@ dt = .0005;            %%%Prob<1, if Check NOT equal zero, then make smaller tim
 sdt = sqrt(dt);
 ts = time/dt;
 
-% What is considered an Outbreak? Maybe based on ICU capacity, maybe based
-% on what we actually considered outbreak in Wuhan, etc., can look at the
-% impact of threshold on how quickly we go from yellow to red lockdown
-% zones
 outbreak = 50;
 
 % Threshold number of E+A+I individuals that requires use of SDE
