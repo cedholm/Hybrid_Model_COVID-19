@@ -4,13 +4,8 @@
 
 %Random Variables are Discrete
 %Monte Carlo Simulation Demographic
-%SEIR COVID19 Model
+%SEAIR COVID19 Model
 %Computes probability of Extinction
-
-%Edited Feb 15 by Karen
-%Changed R0 equation to Rttt equation (Variable name still R0)
-%Dragged the Rttt equation down after parameter get updated timesteps
-%right before the code for NHP <-> SDE 
 
 clear all
 clc;
@@ -38,16 +33,6 @@ b2_0 = 0.519333416;                     %transmission rate for SymptomaticSpread
 b3_0 = 0.3;                             %transmission rate for SymptomaticSpreader Infectious
 mI2 = 0.004;                            %disease-induced mortality rate for infected SymptomaticSpreader - COVID-19 -- region dependent
 
-% Phase 2 Parameters
-% fraction_silent = 0.937944626;          %fraction of individuals that are silent spreaders
-% fraction_symp = 1-fraction_silent;      %fraction of individuals that are symptomatic spreaders
-% R0_fit = 2.755096228;                   %basic reproduction number
-% b1_0 = 0.305688791;                     %transmission rate for SilentSpreader Asymptomatic
-% b2_0 = 0.994680741;                     %transmission rate for SymptomaticSpreader Asymptomatic (Presymptomatic)
-% b3_0 = 0.000361678;                             %transmission rate for SymptomaticSpreader Infectious
-% mI2 = 0.004;                            %disease-induced mortality rate for infected SymptomaticSpreader - COVID-19 -- region dependent
-
-
 % Measured parameters
 aa1 = 1/(5.5-2.3);                      %rate of transition from exposed to asymptomatic stage for SilentSpreader - COVID
 aa2 = 1/(5.5-2.3);                      %rate of transition from exposed to asymptomatic stage for SymptomaticSpreader - COVID
@@ -70,12 +55,6 @@ N2_0 = round((1-fraction_silent)*N_0);             % Symptomatic spreaders at t0
 % ICU
 frac_ICU = 0.0132;
 BC_ICU_beds = 313;
-
-%Nika’s original R0 eqn
-%R0 = b1_0*(N1_0)/(dd1*(N_0))+b1_0*(N2_0)/(dd2*(N_0))+b2_0*(N2_0)/((g2+mI2)*(N_0));
-
-%From Phase 1 Final Multistart
-%R0=(beta1*N10)/(delta1*N)+(beta2*N20)/(delta2*N)+(beta3*N20)/((gamma2+mu2)*N);
 
 % Updated R0 for COVID Phase 1 (Please check!)
 R0 = b1_0*(N1_0)/(dd1*(N_0))+b2_0*(N2_0)/(dd2*(N_0))+b3_0*(N2_0)/((g2+mI2)*(N_0));
@@ -232,10 +211,6 @@ for kk=1:nsim
     R1(timestep)=R1_0;                  R2(timestep)=R2_0;
     S1(timestep)=N1_0-E1_0-A1_0-R1_0;   S2(timestep)=N2_0-E2_0-A2_0-I2_0-R2_0;
     
-%     % Rttt for phase 2
-%     P1t=S1./(S1+E1+A1+R1+S2+E2+A2+I2+R2);
-%     P2t=S2./(S1+E1+A1+R1+S2+E2+A2+I2+R2);
-%     R0 = P1t.*(b1_0/dd1)+(P2t).*(b2_0/dd2+b3_0/(g2+mI2));
     
     while time_curr <= time && E1(timestep)+E2(timestep)+A1(timestep)+A2(timestep)+I2(timestep) > 0
         if Switch == 0
