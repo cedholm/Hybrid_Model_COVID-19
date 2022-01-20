@@ -103,12 +103,7 @@ while E1+E2+A1+A2+I2>0 && time_curr<time && Switch == 1
           fS1w=E1thresh.*fS1w.*E1pos.*E1/thresh+(ones(nsim,1)-E1thresh).*fS1w;
           A1thresh=(A1<=thresh);A1pos=(A1>=0);
           fE1bw=A1thresh.*fE1bw.*A1pos.*A1/thresh+(ones(nsim,1)-A1thresh).*fE1bw;
-          %
-         % A1thresh=(A1<=thresh);A1pos=(A1>=0); %%not needed for COVID
-         % fA1bw=A1thresh.*fA1bw.*A1pos.*A1/thresh+(ones(nsim,1)-A1thresh).*fA1bw;
-         %
-         %I1thresh=(I1<=thresh);I1pos=(I1>=0);
-         %fA1bw=I1thresh.*fA1bw.*I1pos.*I1/thresh+(ones(nsim,1)-I1thresh).*fA1bw;
+
           R1thresh=(R1<=thresh); R1pos=(R1>=0);
           fA1bw=R1thresh.*fA1bw.*R1pos.*R1/thresh+(ones(nsim,1)-R1thresh).*fA1bw;
           %
