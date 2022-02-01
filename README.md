@@ -2,13 +2,15 @@
 
 ## MATLAB code contents
 ### 1. Italy parameter estimation ### 
-  [Italy Days 1-22](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/Italy%20Parameter%20Estimation)
+<br /> &nbsp;&nbsp;
+[Italy Days 1-22](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/Italy%20Parameter%20Estimation)
 <br /> &nbsp;&nbsp;&nbsp;
 Used to generate parameter fitting results for Italy from Days 1-22 (February 20, 2020 - March 12, 2020)
 <br /> &nbsp;&nbsp;
 
 
 ### 2. BC parameter estimation ### 
+<br /> &nbsp;&nbsp;
 [BC Phase I](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/BC%20Parameter%20Estimation/Phase%201)
 <br /> &nbsp;&nbsp;
 Used to generate parameter fitting results for BC from Days 1-60 (January 30, 2020 - March 31, 2020)
@@ -22,7 +24,8 @@ Used to generate parameter fitting results for BC from Days 60-109 (March 31, 20
 ### 3. Hybrid stochastic model ### 
 <br /> &nbsp;&nbsp;
 [Hybrid Model](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/Hybrid%20Model)
-
+<br /> &nbsp;&nbsp;
+The hybrid model calls both the NHP and SDE. Ensure all files in the folder are downloaded
 
 ## How to run MultiStart
 The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and fitted parameter values are specific to the version of the code included in each section. The fixed parameters are listed in COVID_model.m.
@@ -54,4 +57,6 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 - An excel file which has the endpoints 
 - Both figure files which are created
 
+## How to run hybrid stochastic model
+The parameter values for the hybrid model are derived from parameter estimation. Change the values for r and CV to see the change in transmission dynamics associated with environmental variation. Update nsim to change the number of simulations you plan to run. 
 
