@@ -26,6 +26,8 @@ Used to generate parameter fitting results for BC from Days 60-109 (March 31, 20
 [Hybrid Model](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/Hybrid%20Model)
 <br /> &nbsp;&nbsp;
 The hybrid model calls both the NHP and SDE. Ensure all files in the folder are downloaded
+<br /> &nbsp;&nbsp;&nbsp;
+<br /> &nbsp;&nbsp;&nbsp;
 
 ## How to run MultiStart
 The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and fitted parameter values are specific to the version of the code included in each section. The fixed parameters are listed in COVID_model.m.
