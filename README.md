@@ -44,6 +44,12 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 ### Outputs ###
 - **COVIDParameters**: a matrix of all the possible local minimum parameter values, size will relate to the NoStartPoints
 - **fvalues**: all the objective functional minimum values that correspond to the COVIDParameters
-- **ExitFlags**: 
--
+- **ExitFlags**: these values give insight into the convergence of fmincon. We want a 1, and will accept a 2. You will get one for each COVIDParameter and fvalues combo.
+- **Endpoints**: The state variables values at Tend
+
+### When you run the code, it will also save some files in the same folder labelled with the place and the testnumber: ###
+- An excel file which has the COVIDParameters, values, and ExitFlags
+- An excel file which has the endpoints 
+- Both figure files which are created
+
 
