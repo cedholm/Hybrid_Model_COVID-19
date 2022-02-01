@@ -22,6 +22,10 @@ Used to generate parameter fitting results for BC from Days 60-109 (March 31, 20
 <br /> &nbsp;&nbsp;
 <br /> &nbsp;&nbsp;
 
+### 3. Hybrid stochastic model ### 
+<br /> &nbsp;&nbsp;&nbsp;
+[Hybrid Model](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/Hybrid%20Model)
+
 
 ## How to run MultiStart
 The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and fitted parameter values are specific to the version of the code included in each section. The fixed parameters are listed in COVID_model.m.
