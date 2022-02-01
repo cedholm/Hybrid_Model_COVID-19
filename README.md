@@ -2,7 +2,7 @@
 
 ## MATLAB code contents
 ### 1. Italy parameter estimation ### 
-<br />&nbsp;
+<br /> &nbsp;&nbsp;
 [Italy Days 1-22](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/Italy%20Parameter%20Estimation)
 <br /> &nbsp;&nbsp;&nbsp;
 Used to generate parameter fitting results for Italy from Days 1-22 (February 20, 2020 - March 12, 2020)
@@ -56,6 +56,8 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 - An excel file which has the COVIDParameters, values, and ExitFlags
 - An excel file which has the endpoints 
 - Both figure files which are created
+<br /> &nbsp;&nbsp;&nbsp;
+<br /> &nbsp;&nbsp;&nbsp;
 
 ## How to run hybrid stochastic model
 The parameter values for the hybrid model are derived from parameter estimation. Change the values for r and CV to see the change in transmission dynamics associated with environmental variation. Update nsim to change the number of simulations you plan to run. 
