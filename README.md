@@ -8,7 +8,6 @@
 Used to generate parameter fitting results for Italy from Days 1-22 (February 20, 2020 - March 12, 2020)
 <br /> &nbsp;&nbsp;
 
-
 ### 2. BC parameter estimation ### 
 <br /> &nbsp;&nbsp;
 [BC Phase I](https://github.com/cedholm/Hybrid_Model_COVID-19/tree/main/BC%20Parameter%20Estimation/Phase%201)
@@ -60,6 +59,7 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 - A figure file of the output trendline plotted on top of data
 - A figure of the ODE solution, outlining the number of individuals in S, E, A, I, R, respectively
 
+<br /> &nbsp;&nbsp;&nbsp;
 *The command window will print out:*
 - Case Minimization Value
 - Death Minimization Value
