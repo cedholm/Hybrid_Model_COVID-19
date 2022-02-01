@@ -54,12 +54,21 @@ The main file name is COVID_MultiStart.m, which calls COVID_model.m. Fixed and f
 - **Endpoints**: The state variables values at Tend
 
 <br /> &nbsp;&nbsp;&nbsp;
-**When you run the code, it will also save some files in the same folder labelled with the place and the testnumber:**
-- An excel file which has the COVIDParameters, values, and ExitFlags
-- An excel file which has the endpoints 
-- Both figure files which are created
+*When you run the code, it will also save some files in the same folder labelled with the place and the testnumber:*
+- An excel file with the COVIDParameters, values, and ExitFlags
+- An excel file with the endpoints 
+- A figure file of the output trendline plotted on top of data
+- A figure of the ODE solution, outlining the number of individuals in S, E, A, I, R, respectively
+
+*The command window will print out:*
+- Case Minimization Value
+- Death Minimization Value
+- Total Minimization Value
+- R0
 <br /> &nbsp;&nbsp;&nbsp;
 <br /> &nbsp;&nbsp;&nbsp;
+
+
 
 ## How to run hybrid stochastic model
 The parameter values for the hybrid model are derived from parameter estimation. Change the values for r and CV to see the change in transmission dynamics associated with environmental variation. Update nsim to change the number of simulations you plan to run. 
