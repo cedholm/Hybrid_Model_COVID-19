@@ -22,7 +22,7 @@ InitialCondition = 1;
 % PARMATERS ESTIMATED USING ODE MODEL-FITTING OR CLINICAL MEASUREMENTS - COVID-19
 
 % Fit parameters
-global fraction_silent fraction_symp R0_fit b1_0 b2_0 b3_0 mI2 aa1 aa2 dd1 dd2 g2 POPULATION N_0 N1_0 N2_0 R0 r1 r2 r3 sigma1 sigma2 sigma3 time dt
+global fraction_silent fraction_symp R0_fit b1_0 b2_0 b3_0 mI2 aa1 aa2 dd1 dd2 g2 POPULATION N_0 N1_0 N2_0 Rt_0 r1 r2 r3 sigma1 sigma2 sigma3 time dt
 
 
 % Phase 2 Parameters
@@ -58,8 +58,8 @@ N2_0 = round((1-fraction_silent)*N_0);             % Symptomatic spreaders at t0
 frac_ICU = 0.0132;
 BC_ICU_beds = 313;
 
-
-R0 = b1_0*(N1_0)/(dd1*(N_0))+b2_0*(N2_0)/(dd2*(N_0))+b3_0*(N2_0)/((g2+mI2)*(N_0));
+%Calculate Rt at the start of Phase 2
+Rt_0 = b1_0*(N1_0)/(dd1*(N_0))+b2_0*(N2_0)/(dd2*(N_0))+b3_0*(N2_0)/((g2+mI2)*(N_0));
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -284,7 +284,7 @@ disp((sprintf('nsim = %d, time = %d, timestep = %f, thresh = %d\nr = %.2f, CV = 
 disp((sprintf('----------------------------------------------------------------------')))
 disp((sprintf('Check %d',sum(sum(Error_check)))))
 disp((sprintf('----------------------------------------------------------------------')))
-disp((sprintf('R0 = %.2f',R0)))
+disp((sprintf('Rt_0 = %.2f',Rt_0)))
 disp((sprintf('Probability of outbreak = %.2f',numOutbreak/nsim)))
 disp((sprintf('Probability of ICU overload = %.2f',numICUoverload/nsim)))
 disp((sprintf('----------------------------------------------------------------------')))
