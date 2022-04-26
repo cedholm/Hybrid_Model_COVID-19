@@ -7,11 +7,6 @@
 %SEIR COVID19 Model
 %Computes probability of Extinction
 
-%Edited Feb 15 by Karen
-%Changed R0 equation to Rttt equation (Variable name still R0)
-%Dragged the Rttt equation down after parameter get updated timesteps
-%right before the code for NHP <-> SDE 
-
 clear all
 clc;
 close all
@@ -29,14 +24,6 @@ InitialCondition = 1;
 % Fit parameters
 global fraction_silent fraction_symp R0_fit b1_0 b2_0 b3_0 mI2 aa1 aa2 dd1 dd2 g2 POPULATION N_0 N1_0 N2_0 R0 r1 r2 r3 sigma1 sigma2 sigma3 time dt
 
-% Phase 1 Parameters
-% fraction_silent = 0.675469407;          %fraction of individuals that are silent spreaders
-% fraction_symp = 1-fraction_silent;      %fraction of individuals that are symptomatic spreaders
-% R0_fit = 2.755096228;                   %basic reproduction number
-% b1_0 = 0.600106951;                     %transmission rate for SilentSpreader Asymptomatic
-% b2_0 = 0.519333416;                     %transmission rate for SymptomaticSpreader Asymptomatic (Presymptomatic)
-% b3_0 = 0.3;                             %transmission rate for SymptomaticSpreader Infectious
-% mI2 = 0.004;                            %disease-induced mortality rate for infected SymptomaticSpreader - COVID-19 -- region dependent
 
 % Phase 2 Parameters
 fraction_silent = 0.937944626;          %fraction of individuals that are silent spreaders
@@ -71,13 +58,7 @@ N2_0 = round((1-fraction_silent)*N_0);             % Symptomatic spreaders at t0
 frac_ICU = 0.0132;
 BC_ICU_beds = 313;
 
-%Nika’s original R0 eqn
-%R0 = b1_0*(N1_0)/(dd1*(N_0))+b1_0*(N2_0)/(dd2*(N_0))+b2_0*(N2_0)/((g2+mI2)*(N_0));
 
-%From Phase 1 Final Multistart
-%R0=(beta1*N10)/(delta1*N)+(beta2*N20)/(delta2*N)+(beta3*N20)/((gamma2+mu2)*N);
-
-% Updated R0 for COVID Phase 1 (Please check!)
 R0 = b1_0*(N1_0)/(dd1*(N_0))+b2_0*(N2_0)/(dd2*(N_0))+b3_0*(N2_0)/((g2+mI2)*(N_0));
 
 
@@ -103,10 +84,6 @@ dt = .0005;            %%%Prob<1, if Check NOT equal zero, then make smaller tim
 sdt = sqrt(dt);
 ts = time/dt;
 
-% What is considered an Outbreak? Maybe based on ICU capacity, maybe based
-% on what we actually considered outbreak in Wuhan, etc., can look at the
-% impact of threshold on how quickly we go from yellow to red lockdown
-% zones
 outbreak = 50;
 
 % Threshold number of E+A+I individuals that requires use of SDE
@@ -232,10 +209,6 @@ for kk=1:nsim
     R1(timestep)=R1_0;                  R2(timestep)=R2_0;
     S1(timestep)=N1_0-E1_0-A1_0-R1_0;   S2(timestep)=N2_0-E2_0-A2_0-I2_0-R2_0;
     
-%     % Rttt for phase 2
-%     P1t=S1./(S1+E1+A1+R1+S2+E2+A2+I2+R2);
-%     P2t=S2./(S1+E1+A1+R1+S2+E2+A2+I2+R2);
-%     R0 = P1t.*(b1_0/dd1)+(P2t).*(b2_0/dd2+b3_0/(g2+mI2));
     
     while time_curr <= time && E1(timestep)+E2(timestep)+A1(timestep)+A2(timestep)+I2(timestep) > 0
         if Switch == 0
@@ -285,166 +258,11 @@ for kk=1:nsim
 
         numOutbreak = numOutbreak + 1;
     end
-
-%     if kk <= 10
-%         cmap=colormap(hsv(10));
-%         figure(1)
-%         subplot(1,2,1)
-%         hold on
-%         plot(0:dt:(length(I2)-1)*dt,I2,'Linewidth',1.5,'Color',cmap(kk,:));
-%         set(gca,'Linewidth',2)
-%         axis tight
-%         ylabel('Number of infections')
-%         xlabel('Time (days)')
-%         grid off
-%         box on
-% 
-%         if outbreak_occured == true
-%             subplot(1,2,2)
-%             hold on
-%             plot(0:dt:(length(I2)-1)*dt,beta2,'Linewidth',1.5,'Color',cmap(kk,:));
-%             set(gca,'Linewidth',2)
-%             axis tight
-%             ylabel('\beta_2(t)')
-%             xlabel('Time (days)')
-%             grid off
-%             box on
-%         end
-%     end
-    
-    % Plot the error check
-%     figure(3)
-%     subplot(1,2,1)
-%     c = rand(1,3);
-%     plot(0:dt:(length(I2)-2)*dt,Error_check(kk,1:length(I2)-1),'Linewidth',1.5,'color',c)
-%     set(gca,'Linewidth',2)
-%     ylabel('Error check value')
-%     xlabel('Time (days')
-%     box on
-%     hold on
-%     
-%     if sum(Error_check(kk,:)) > 0
-%         subplot(1,2,2)
-%         plot(0:dt:(length(I2)-1)*dt,I2(1:timestep-1),'Linewidth',1.5,'Color',c)
-%         set(gca,'Linewidth',2)
-%         ylabel('Number of infections')
-%         xlabel('Time (days')
-%         box on
-%     end
-%     hold on
     
     if sum(Error_check(kk,:)) > 0
         Error_run = Error_run + 1;
     end
 end
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% MAKE PLOTS
-% figure(1)
-% subplot(1,2,2)
-% hold on
-% plot(0:dt:(length(I2)-1)*dt,b2_0*ones(1,length(I2)),'k:','Linewidth',2);
-% 
-% str = sprintf(['NHP_COVID19_SamplePathNumInf_r',r_value_print,'_CV',CV_value_print,'_InitialCondition',num2str(InitialCondition)]);
-% set(gcf,'Name',str,'NumberTitle','off')
-% saveas(gcf,strcat(str,'.fig'))
-% saveas(gcf,strcat(str,'.png'))
-% 
-% figure(2)
-% subplot(6,1,1)
-% [h temp] = hist(Peak_Infections,50);
-% b = bar(temp,h/nsim);
-% set(b,'FaceColor',[51 51 255]/255,'EdgeColor','k','Linewidth',1.5);
-% set(gca,'Linewidth',2)
-% set(gca,'Linewidth',2)
-% axis tight
-% str = sprintf('R_0 = %.2f, I2_0=%i (Mean = %.2f, Std = %f)',R0, I2_0, mean(Peak_Infections),std(Peak_Infections));
-% title(str);
-% ylabel('Frequency')
-% xlabel('Peak infections')
-% grid on
-% grid minor
-% grid minor
-% 
-% subplot(6,1,2)
-% [h temp] = hist(Time_Peak_Infections,50);
-% b = bar(temp,h/nsim);
-% set(b,'FaceColor',[51 51 255]/255,'EdgeColor','k','Linewidth',1.5);
-% set(gca,'Linewidth',2)
-% set(gca,'Linewidth',2)
-% axis tight
-% str = sprintf('R_0 = %.2f, I2_0=%i (Mean = %.2f, Std = %f)',R0, I2_0, mean(Time_Peak_Infections),std(Time_Peak_Infections));
-% title(str);
-% ylabel('Frequency')
-% xlabel('Time to peak infection [days]')
-% grid on
-% grid minor
-% grid minor
-% 
-% subplot(6,1,3)
-% [h temp] = hist(Time_Outbreak,50);
-% b = bar(temp,h/nsim);
-% set(b,'FaceColor',[51 51 255]/255,'EdgeColor','k','Linewidth',1.5);
-% set(gca,'Linewidth',2)
-% set(gca,'Linewidth',2)
-% axis tight
-% str = sprintf('R_0 = %.2f, I2_0=%i (Mean = %.2f, Std = %f)',R0, I2_0, mean(Time_Outbreak),std(Time_Outbreak));
-% title(str);
-% ylabel('Frequency')
-% xlabel('Time to outbreak [days]')
-% grid on
-% grid minor
-% grid minor
-% 
-% subplot(6,1,4)
-% [h temp] = hist(Num_Deaths,50);
-% b = bar(temp,h/nsim);
-% set(b,'FaceColor',[51 51 255]/255,'EdgeColor','k','Linewidth',1.5);
-% set(gca,'Linewidth',2)
-% set(gca,'Linewidth',2)
-% axis tight
-% str = sprintf('R_0 = %.2f, I2_0=%i (Mean = %.2f, Std = %f)',R0, I2_0, mean(Num_Deaths),std(Num_Deaths));
-% title(str);
-% ylabel('Frequency')
-% xlabel('Number of deaths')
-% grid on
-% grid minor
-% grid minor
-% 
-% subplot(6,1,5)
-% [h temp] = hist(Num_Inf,50);
-% b = bar(temp,h/nsim);
-% set(b,'FaceColor',[51 51 255]/255,'EdgeColor','k','Linewidth',1.5);
-% set(gca,'Linewidth',2)
-% set(gca,'Linewidth',2)
-% axis tight
-% str = sprintf('R_0 = %.2f, I2_0=%i (Mean = %.2f, Std = %f)',R0, I2_0, mean(Num_Inf),std(Num_Inf));
-% title(str);
-% ylabel('Frequency')
-% xlabel('Number of infections')
-% grid on
-% grid minor
-% grid minor
-% 
-% subplot(6,1,6)
-% [h temp] = hist(Num_SilInf,50);
-% b = bar(temp,h/nsim);
-% set(b,'FaceColor',[51 51 255]/255,'EdgeColor','k','Linewidth',1.5);
-% set(gca,'Linewidth',2)
-% set(gca,'Linewidth',2)
-% axis tight
-% str = sprintf('R_0 = %.2f, I2_0=%i (Mean = %.2f, Std = %f)',R0, I2_0, mean(Num_SilInf),std(Num_SilInf));
-% title(str);
-% ylabel('Frequency')
-% xlabel('Number of infected silent spreaders')
-% grid on
-% grid minor
-% grid minor
-% 
-% str = sprintf(['Hybrid_COVID19_NumDeaths_PeakInf_TimePeak_NumInf_TimeOutbreak_NumSilentInf_r',r_value_print,'_CV',CV_value_print,'_InitialCondition',num2str(InitialCondition)]);
-% set(gcf,'Name',str,'NumberTitle','off')
-% saveas(gcf,strcat(str,'.fig'))
-% saveas(gcf,strcat(str,'.png'))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SAVE DATA
