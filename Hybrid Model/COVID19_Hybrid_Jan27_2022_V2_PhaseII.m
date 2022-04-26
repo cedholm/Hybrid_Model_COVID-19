@@ -22,13 +22,12 @@ InitialCondition = 1;
 % PARMATERS ESTIMATED USING ODE MODEL-FITTING OR CLINICAL MEASUREMENTS - COVID-19
 
 % Fit parameters
-global fraction_silent fraction_symp R0_fit b1_0 b2_0 b3_0 mI2 aa1 aa2 dd1 dd2 g2 POPULATION N_0 N1_0 N2_0 Rt_0 r1 r2 r3 sigma1 sigma2 sigma3 time dt
+global fraction_silent fraction_symp b1_0 b2_0 b3_0 mI2 aa1 aa2 dd1 dd2 g2 POPULATION N_0 N1_0 N2_0 Rt_0 r1 r2 r3 sigma1 sigma2 sigma3 time dt
 
 
 % Phase 2 Parameters
 fraction_silent = 0.937944626;          %fraction of individuals that are silent spreaders
 fraction_symp = 1-fraction_silent;      %fraction of individuals that are symptomatic spreaders
-R0_fit = 2.755096228;                   %basic reproduction number
 b1_0 = 0.305688791;                     %transmission rate for SilentSpreader Asymptomatic
 b2_0 = 0.994680741;                     %transmission rate for SymptomaticSpreader Asymptomatic (Presymptomatic)
 b3_0 = 0.000361678;                             %transmission rate for SymptomaticSpreader Infectious
