@@ -1,3 +1,4 @@
+%Written by: Karen K. L. Hwang, Christina J. Edholm, Omar Saucedo, Linda J. S. Allen, Nika Shakiba
 %Hybrid model combining:
 %Time Inhomogeneous Markov chain (Non-homogenous Process = NHP)
 %Stochastic Differential Equation (SDNE)
@@ -40,8 +41,6 @@ dd1 = 0.356907003;                      %rate of transition from asymptomatic to
 dd2 = 1/2.3;                            %rate of transition from asymptomatic to infected stage for SymptomaticSpreader - COVID
 g2 = 0.075;                             %removal rate for SymptomaticSpreader - COVID
 
-% POPULATION = 5110917;                   %population size of jurisdiction of interest
-
 % Phase 2 Population
 POPULATION = 5110894.661;
 
@@ -51,12 +50,11 @@ N_0 = round(POPULATION/1);                      % Simulate for a fraction of tot
 N1_0 = round(fraction_silent*N_0);                 % Silent spreaders at t0
 N2_0 = round((1-fraction_silent)*N_0);             % Symptomatic spreaders at t0
 
-% For ICU bed availability, need fraction symptomatic (I2) who end up in
-% ICU
-frac_ICU = 0.0132;
-BC_ICU_beds = 313;
 
-% Updated R0 for COVID Phase 1 (Please check!)
+frac_ICU = 0.0132;                     %fraction of symptomatic individuals who end up in the intensive care unit (ICU)
+BC_ICU_beds = 313;                     %number of beds in the intensive care unit (ICU) 
+
+
 R0 = b1_0*(N1_0)/(dd1*(N_0))+b2_0*(N2_0)/(dd2*(N_0))+b3_0*(N2_0)/((g2+mI2)*(N_0));
 
 
