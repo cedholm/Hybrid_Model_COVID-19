@@ -1,10 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % COVID_Model_IC_Rt.m
-%Christina Edholm 
-%Edited by Karen Hwang
-%
-% Fit d1, assume d2 remains as 1/2.3, d1 < d2
-% Fit g2
+% Christina Edholm 
+% Edited by Karen Hwang
 %
 % This code is the ODE model we are using, first we establish parameters
 % then write out the system of ODEs. The SilentSpreaders are the 1.
@@ -17,24 +14,20 @@
 
 function dydt = f(t,y,z)
 
-%Parameters
-
 %Parameter Values - COVID
-
-%parameters fitted - [b1, b2, b3, aa1, aa2, d1, d2, mI2, g2]
 
 b1=z(1);            %transmission rate for SilentSpreader Asymptomatics
 b2=z(2);            %transmission rate for SymptomaticSpreader Asymptomatics
-b3=z(3);              %transmission rate for SymptomaticSpreader Infectious
-aa1=z(4);    %rate of transition from exposed to asymptomatic stage for SilentSpreader - COVID -- double check
-aa2=z(5);    %rate of transition from exposed to asymptomatic stage for SymptomaticSpreader - COVID -- double check
-d1= z(6);          %rate of transition from asymptomatic to infected stage for SilentSpreader - COVID
-d2= z(7);          %rate of transition from asymptomatic to infected stage for SymptomaticSpreader - COVID
-mI2=z(8);           %disease-induced mortality rate for infected SymptomaticSpreader - MERS -- region dependent
-g2=z(9);            %removal rate for SymptomaticSpreader - COVID
+b3=z(3);            %transmission rate for SymptomaticSpreader Infectious
+aa1=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SilentSpreader
+aa2=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SymptomaticSpreader 
+d1= 0.356907003;    %rate of transition from asymptomatic to infected stage for SilentSpreader 
+d2= 1/2.3;          %rate of transition from asymptomatic to infected stage for SymptomaticSpreader     
+mI2=0.00314;        %disease-induced mortality rate for infected SymptomaticSpreader
+g2=0.075;           %removal rate for SymptomaticSpreader 
 
 
-%leave these alone for now
+
 ep1=1;              %scaling factor for SilentSpreader Asymptomatics
 ep2=1;              %scaling factor for SymptomaticSpreader Asymptomatics
 rh2=1;              %scaling factor for SymptomaticSpreader Infectious
