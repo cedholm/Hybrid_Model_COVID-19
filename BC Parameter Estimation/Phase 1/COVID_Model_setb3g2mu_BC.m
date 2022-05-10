@@ -20,14 +20,13 @@ function dydt = f(t,y,z)
 
 b1=z(1);            %transmission rate for SilentSpreader Asymptomatics
 b2=z(2);            %transmission rate for SymptomaticSpreader Asymptomatics
-b3=0.3;              %transmission rate for SymptomaticSpreader Infectious
-aa1=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SilentSpreader - COVID -- double check
-aa2=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SymptomaticSpreader - COVID -- double check
-d1= z(4);          %rate of transition from asymptomatic to infected stage for SilentSpreader - COVID
-d2= 1/2.3;          %rate of transition from asymptomatic to infected stage for SymptomaticSpreader - COVID
-mI2=0.004;           %disease-induced mortality rate for infected SymptomaticSpreader - MERS -- region dependent
-g2=0.075;            %removal rate for SymptomaticSpreader - COVID
-
+b3=0.3;             %transmission rate for SymptomaticSpreader Infectious
+aa1=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SilentSpreader 
+aa2=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SymptomaticSpreader
+d1= z(4);           %rate of transition from asymptomatic to infected stage for SilentSpreader 
+d2= 1/2.3;          %rate of transition from asymptomatic to infected stage for SymptomaticSpreader 
+mI2=0.004;          %disease-induced mortality rate for infected SymptomaticSpreader 
+g2=0.075;           %removal rate for SymptomaticSpreader
 
 %leave these alone for now
 ep1=1;              %scaling factor for SilentSpreader Asymptomatics
