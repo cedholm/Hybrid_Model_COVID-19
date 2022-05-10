@@ -1,4 +1,6 @@
 
+% Written by: Karen K. L. Hwang, Christina J. Edholm, Omar Saucedo, Linda J. S. Allen, Nika Shakiba
+
 function [timestep,time_curr,beta1_overtime,beta2_overtime,beta3_overtime,S1_overtime,S2_overtime,E1_overtime,E2_overtime,A1_overtime,A2_overtime,I2_overtime,R1_overtime,R2_overtime,numDeaths,Switch] = COVID19_Hybrid_SDE(timestep,time_curr,beta1_overtime,beta2_overtime,beta3_overtime,S1_overtime,S2_overtime,E1_overtime,E2_overtime,A1_overtime,A2_overtime,I2_overtime,R1_overtime,R2_overtime,numDeaths,threshold_hybrid_SDEtoNHP,Switch);
    
     global fraction_silent fraction_symp R0_fit b1_0 b2_0 b3_0 mI2 aa1 aa2 dd1 dd2 g2 POPULATION N_0 N1_0 N2_0 R0 r1 r2 r3 sigma1 sigma2 sigma3 time dt
