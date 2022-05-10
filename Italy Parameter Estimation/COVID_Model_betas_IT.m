@@ -1,9 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% COVID_Model.m
-%Christina Edholm 
-%Edited by Karen Hwang
-%g2 = 1/14 instead of 1/28
-%Fit d1, assume d2 remains as 1/2.3, d1 < d2
+% Written by: Karen K. L. Hwang, Christina J. Edholm, Omar Saucedo, Linda J. S. Allen, Nika Shakiba
+
+% COVID_Model_betas_IT.m
 %
 % This code is the ODE model we are using, first we establish parameters
 % then write out the system of ODEs. The SilentSpreaders are the 1.
@@ -23,22 +21,12 @@ function dydt = f(t,y,z)
 b1=z(1);            %transmission rate for SilentSpreader Asymptomatics
 b2=z(2);            %transmission rate for SymptomaticSpreader Asymptomatics
 b3=z(3);              %transmission rate for SymptomaticSpreader Infectious
-aa1=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SilentSpreader - COVID -- double check
-aa2=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SymptomaticSpreader - COVID -- double check
-d1= z(6);          %rate of transition from asymptomatic to infected stage for SilentSpreader - COVID
-d2= 1/2.3;          %rate of transition from asymptomatic to infected stage for SymptomaticSpreader - COVID
-mI2=z(4);           %disease-induced mortality rate for infected SymptomaticSpreader - MERS -- region dependent
-g2=z(7);            %removal rate for SymptomaticSpreader - COVID
-
-%R0=(b1*N10)/(d1*N)+(b2*N20)/(d2*N)+(b3*N20)/((g2+mI2)*N);
-%%p= z(4);
-
-%b3= ((R0-(b1*p)/(d1)-(b2*(1-p))/(d2)))*((g2+mI2)))/(1-p);
-
-%b3=((R0-(b1*p)/d1-(b2*(1-p))/d2)*(g2+mI2))/(1-p);
-
-%b3=((R0-((b1*p)/d1)-((b2*(1-p))/d2))*((g2+mI2))/(1-p));
-
+aa1=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SilentSpreader
+aa2=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SymptomaticSpreader 
+d1= z(6);          %rate of transition from asymptomatic to infected stage for SilentSpreader
+d2= 1/2.3;          %rate of transition from asymptomatic to infected stage for SymptomaticSpreader 
+mI2=z(4);           %disease-induced mortality rate for infected SymptomaticSpreader
+g2=z(7);            %removal rate for SymptomaticSpreader 
 
 
 %leave these alone for now
