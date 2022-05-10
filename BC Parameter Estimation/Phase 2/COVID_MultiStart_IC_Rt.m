@@ -1,12 +1,9 @@
 function [COVIDPaRameters,fvalues,ExitFlags, endpoints] = COVID_MultiStart_IC_Rt(NoStartPoints, Tstart, Tend, testnumber) 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% COVID_MultiStart_IC_Rt.m
-% Christina Edholm edited by Karen Hwang
+% Written by: Karen K. L. Hwang, Christina J. Edholm, Omar Saucedo, Linda J. S. Allen, Nika Shakiba
 %
 % To run this code you need to give how many Multistart runs you want
 % NoStartPoints, the day to start Tstart, the day to end Tend
-%
-% Manually enter the Asymp IC
 %
 %
 % This code calls the COVID_Model_IC_Rt -- ODE equations
@@ -24,7 +21,7 @@ function [COVIDPaRameters,fvalues,ExitFlags, endpoints] = COVID_MultiStart_IC_Rt
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Upper and Lower bounds for parameters you are fitting. If you want to change 
-% the parameter you need to edit here and in the COVID_Model.m -- only parameters in this code are p and inital consitions. 
+% Edit parameters here and in the COVID_Model_IC_Rt.m -- only parameters in this code are p and inital conditions. 
 % Initial conditions for Asymp and Exposed are set in the next section so
 % delete these and set then to z values in the two function COVID_RUN_ODE45
 % and COVIDODE45_Plotoutputs.
@@ -377,8 +374,8 @@ diff2 = Dts - CumDeathsfit;
 
 diff3 = RIts - CumRecovfit;
 
-%Objective function which is minimized"
-%just fitting deaths for Phase II
+% Objective function which is minimized"
+% just fitting deaths for Phase II
 value = norm(diff2,2)/norm(CumDeathsfit);
 
 vec1 = diff1(5:length(diff1));
