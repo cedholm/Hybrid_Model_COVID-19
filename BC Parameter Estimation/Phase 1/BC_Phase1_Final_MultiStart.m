@@ -1,8 +1,9 @@
 function [COVIDParameters,fvalues,ExitFlags, endpoints] = BC_Phase1_Final_MultiStart(NoStartPoints, Tstart, Tend, place, testnumber) 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%COVID_MultiStart.m
-%Christina Edholm edited by Karen Hwang
-%
+% Written by: Karen K. L. Hwang, Christina J. Edholm, Omar Saucedo, Linda J. S. Allen, Nika Shakiba
+
+% BC_Phase1_Final_MultiStart.m
+
 % To run this code you need to give how many Multistart runs you want
 % NoStartPoints, the day to start Tstart, the day to end Tend, the place
 % choose 'NY', 'ND', or 'BC, and what test this is 1,2,3....
@@ -10,8 +11,7 @@ function [COVIDParameters,fvalues,ExitFlags, endpoints] = BC_Phase1_Final_MultiS
 % This code calls the COVID_Model_setb3g2mu -- ODE equations
 % 
 % This code will plot results, calculate R0, AIC, and the minimization
-% functional value. Along with possible parameters to minimize. (Working on
-% AIC and R0)
+% functional value. Along with possible parameters to minimize.
 % 
 %
 % You can change the LowerBounds and UpperBounds below for the parameters
@@ -122,7 +122,7 @@ if Tstart == 1
 else
     InitialInfectedSymptomatic=CumCases(datastart+1)-CumCases(datastart);
 end
-%% MultiStart and fmincon - Fitting Part - Parallelization - not many comments ask Christina for clarification if you want.
+%% MultiStart and fmincon - Fitting Part - Parallelization
 
 problem = createOptimProblem('fmincon','objective',@COVID_RUN_ODE45...
 ,'x0',xstart,'lb',LowerBounds,'ub',UpperBounds);%,'Aineq',A,'bineq',b)%,'Aeq',Aeq,'beq',beq);
