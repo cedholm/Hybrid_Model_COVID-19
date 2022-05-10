@@ -1,10 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% COVID_Model.m
-%Christina Edholm 
-%Edited by Karen Hwang
-%
-% Fit d1, assume d2 remains as 1/2.3, d1 < d2
-% Fit g2
+% Written by: Karen K. L. Hwang, Christina J. Edholm, Omar Saucedo, Linda J. S. Allen, Nika Shakiba
+
+% COVID_Model_setb2g2mu.m
 %
 % This code is the ODE model we are using, first we establish parameters
 % then write out the system of ODEs. The SilentSpreaders are the 1.
