@@ -1,7 +1,7 @@
 function [COVIDPaRameters,fvalues,ExitFlags, endpoints] = COVID_MultiStart_IC_Rt(NoStartPoints, Tstart, Tend, testnumber) 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%COVID_MultiStart_IC_Rt.m
-%Christina Edholm edited by Karen Hwang
+% COVID_MultiStart_IC_Rt.m
+% Christina Edholm edited by Karen Hwang
 %
 % To run this code you need to give how many Multistart runs you want
 % NoStartPoints, the day to start Tstart, the day to end Tend
@@ -17,7 +17,7 @@ function [COVIDPaRameters,fvalues,ExitFlags, endpoints] = COVID_MultiStart_IC_Rt
 % 
 %
 % You can change the LowerBounds and UpperBounds below for the parameters
-% we are estimating, beta1, beta2, muI2, and p. This can be changed!
+% we are estimating, beta1, beta2, beta3, and p. This can be changed!
 % 
 %
 % October 1, 2020
@@ -77,13 +77,14 @@ InitialRecoveredSymptomatic=CumRecov(datastart);
 
 count=1;
 
-%% HERE CHANGE THE INTIAL CONDITIONS
+%% CHANGE THE INTIAL CONDITIONS HERE
+%% The numbers here right now are the endpoints from Phase I
 
 for InitialAsymptomaticSilent=[942.8193927];
     
    for InitialAsymptomaticSymptomatic=[391.6875341];
 
-%% MultiStart and fmincon - Fitting Part - Parallelization - not many comments ask Christina for clarification if you want.
+%% MultiStart and fmincon - Fitting Part - Parallelization 
 
 [COVIDParameters,ExitFlags,fvalues] = RunMultiFmincon(xstart,LowerBounds,UpperBounds)
 
@@ -309,7 +310,6 @@ diff3 = RIts - CumRecovfit;
 
 
 %Objective function which is minimized"
-%value = norm(diff1,2)/norm(CumCasesfit) + norm(diff2,2)/norm(CumDeathsfit)+ norm(diff3,2)/norm(CumRecovfit);
 
 value = norm(diff2,2)/norm(CumDeathsfit);
 
@@ -339,11 +339,6 @@ A20=InitialAsymptomaticSymptomatic;                     %Asymptomatic individual
 
 S10=p*(P2TotalPop-R10-E10-A10-R20-E20-A20-I20);                                         %SilentSpreaders
 S20=(1-p)*(P2TotalPop-R10-E10-A10-R20-E20-A20-I20);                                     %SymptomaticSpreaders
-%S10=3447000;
-%S20=1656000; 
-
-%S10=N10-R10-E10-A10;                                    %Removed individuals for SilentSpreader
-%S20=N20-R20-E20-A20-I20;                                %Removed individuals for SymptomaticSpreaders
 
 N10=S10+E10+A10+R10;
 N20=S20+E20+A20+I20+R20;
@@ -383,9 +378,7 @@ diff2 = Dts - CumDeathsfit;
 diff3 = RIts - CumRecovfit;
 
 %Objective function which is minimized"
-%value = norm(diff1,2)/norm(CumCasesfit) + norm(diff2,2)/norm(CumDeathsfit)+ norm(diff3,2)/norm(CumRecovfit);
-
-%just fitting deaths
+%just fitting deaths for Phase II
 value = norm(diff2,2)/norm(CumDeathsfit);
 
 vec1 = diff1(5:length(diff1));
@@ -519,13 +512,13 @@ function dydt = f(t,y,z)
 
 b1=z(1);            %transmission rate for SilentSpreader Asymptomatics
 b2=z(2);            %transmission rate for SymptomaticSpreader Asymptomatics
-b3=z(3);              %transmission rate for SymptomaticSpreader Infectious
-aa1=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SilentSpreader - COVID -- double check
-aa2=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SymptomaticSpreader - COVID -- double check
-d1= 0.356823803;          %rate of transition from asymptomatic to infected stage for SilentSpreader - COVID
-d2= 1/2.3;          %rate of transition from asymptomatic to infected stage for SymptomaticSpreader - COVID
-mI2=0.00314;           %disease-induced mortality rate for infected SymptomaticSpreader - MERS -- region dependent
-g2=0.075;            %removal rate for SymptomaticSpreader - COVID
+b3=z(3);            %transmission rate for SymptomaticSpreader Infectious
+aa1=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SilentSpreader 
+aa2=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SymptomaticSpreader 
+d1= 0.356823803;    %rate of transition from asymptomatic to infected stage for SilentSpreader 
+d2= 1/2.3;          %rate of transition from asymptomatic to infected stage for SymptomaticSpreader 
+mI2=0.00314;        %disease-induced mortality rate for infected SymptomaticSpreader
+g2=0.075;           %removal rate for SymptomaticSpreader 
 
 
 %leave these alone for now
