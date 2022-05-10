@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Written by: Karen K. L. Hwang, Christina J. Edholm, Omar Saucedo, Linda J. S. Allen, Nika Shakiba
+%
 % COVID_Model_IC_Rt.m
-% Christina Edholm 
-% Edited by Karen Hwang
 %
 % This code is the ODE model we are using, first we establish parameters
 % then write out the system of ODEs. The SilentSpreaders are the 1.
