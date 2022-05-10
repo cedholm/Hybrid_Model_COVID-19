@@ -1,4 +1,4 @@
-%UPDATED Mar 24, 2021 to mactch the linewidth, fonts etc. with the rest
+%UPDATED Mar 24, 2021 
 %The purpose of this code is plot the SEAIR model compartments according to
 %the fitted parameters of phase 1 in BC. 
 
