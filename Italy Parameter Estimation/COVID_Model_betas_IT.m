@@ -20,10 +20,10 @@ function dydt = f(t,y,z)
 
 b1=z(1);            %transmission rate for SilentSpreader Asymptomatics
 b2=z(2);            %transmission rate for SymptomaticSpreader Asymptomatics
-b3=z(3);              %transmission rate for SymptomaticSpreader Infectious
+b3=z(3);            %transmission rate for SymptomaticSpreader Infectious
 aa1=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SilentSpreader
 aa2=1/(5.5-2.3);    %rate of transition from exposed to asymptomatic stage for SymptomaticSpreader 
-d1= z(6);          %rate of transition from asymptomatic to infected stage for SilentSpreader
+d1= z(6);           %rate of transition from asymptomatic to infected stage for SilentSpreader
 d2= 1/2.3;          %rate of transition from asymptomatic to infected stage for SymptomaticSpreader 
 mI2=z(4);           %disease-induced mortality rate for infected SymptomaticSpreader
 g2=z(7);            %removal rate for SymptomaticSpreader 
