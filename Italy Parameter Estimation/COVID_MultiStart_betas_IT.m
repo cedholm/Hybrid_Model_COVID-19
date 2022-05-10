@@ -1,7 +1,8 @@
 function [COVIDParameters,fvalues,ExitFlags, endpoints] = COVID_MultiStart_betas_IT(NoStartPoints, Tstart, Tend, place, testnumber) 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%COVID_MultiStart.m
-%Christina Edholm edited by Karen Hwang
+%Written by: Karen K. L. Hwang, Christina J. Edholm, Omar Saucedo, Linda J. S. Allen, Nika Shakiba
+
+%COVID_MultiStart_betas_IT.m
 %
 % To run this code you need to give how many Multistart runs you want
 % NoStartPoints, the day to start Tstart, the day to end Tend, the place
@@ -12,12 +13,9 @@ function [COVIDParameters,fvalues,ExitFlags, endpoints] = COVID_MultiStart_betas
 % This code will plot results, calculate R0, AIC, and the minimization
 % functional value. Along with possible parameters to minimize. (Working on
 % AIC and R0)
-% 
-% Try adding recovered again
 %
 % You can change the LowerBounds and UpperBounds below for the parameters
-% we are estimating, beta1, beta2, muI2, and p. This can be chnaged!
-% 
+% we are estimating, beta1, beta2, beta3, muI2, p, d1, g2. This can be changed!
 %
 % June 1, 2020
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,7 +125,8 @@ if Tstart == 1
 else
     InitialInfectedSymptomatic=CumCases(datastart+1)-CumCases(datastart);
 end
-%% MultiStart and fmincon - Fitting Part - Parallelization - not many comments ask Christina for clarification if you want.
+
+%% MultiStart and fmincon - Fitting Part - Parallelization 
 
 problem = createOptimProblem('fmincon','objective',@COVID_RUN_ODE45...
 ,'x0',xstart,'lb',LowerBounds,'ub',UpperBounds);%,'Aineq',A,'bineq',b)%,'Aeq',Aeq,'beq',beq);
@@ -288,9 +287,6 @@ A20=InitialAsymptomaticSymptomatic;                     %Asymptomatic individual
 S10=p*(TotalPop-R10-E10-A10-R20-E20-A20-I20);                                         %SilentSpreaders
 S20=(1-p)*(TotalPop-R10-E10-A10-R20-E20-A20-I20);                                     %SymptomaticSpreaders
 
-%S10=N10-R10-E10-A10;                                    %Removed individuals for SilentSpreader
-%S20=N20-R20-E20-A20-I20;                                %Removed individuals for SymptomaticSpreaders
-
 N10=S10+E10+A10+R10;
 N20=S20+E20+A20+I20+R20;
 
@@ -352,8 +348,6 @@ A20=InitialAsymptomaticSymptomatic;                     %Asymptomatic individual
 S10=p*(TotalPop-R10-E10-A10-R20-E20-A20-I20);                                         %SilentSpreaders
 S20=(1-p)*(TotalPop-R10-E10-A10-R20-E20-A20-I20);                                     %SymptomaticSpreaders
 
-%S10=N10-R10-E10-A10;                                    %Removed individuals for SilentSpreader
-%S20=N20-R20-E20-A20-I20;                                %Removed individuals for SymptomaticSpreaders
 
 N10=S10+E10+A10+R10;
 N20=S20+E20+A20+I20+R20;
