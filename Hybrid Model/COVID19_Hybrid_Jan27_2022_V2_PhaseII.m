@@ -1,3 +1,5 @@
+% Written by: Karen K. L. Hwang, Christina J. Edholm, Omar Saucedo, Linda J. S. Allen, Nika Shakiba
+
 %Hybrid model combining:
 %Time Inhomogeneous Markov chain (Non-homogenous Process = NHP)
 %Stochastic Differential Equation (SDNE)
@@ -30,8 +32,8 @@ fraction_silent = 0.937944626;          %fraction of individuals that are silent
 fraction_symp = 1-fraction_silent;      %fraction of individuals that are symptomatic spreaders
 b1_0 = 0.305688791;                     %transmission rate for SilentSpreader Asymptomatic
 b2_0 = 0.994680741;                     %transmission rate for SymptomaticSpreader Asymptomatic (Presymptomatic)
-b3_0 = 0.000361678;                             %transmission rate for SymptomaticSpreader Infectious
-mI2 = 0.00314;                            %disease-induced mortality rate for infected SymptomaticSpreader - COVID-19 -- region dependent
+b3_0 = 0.000361678;                     %transmission rate for SymptomaticSpreader Infectious
+mI2 = 0.00314;                          %disease-induced mortality rate for infected SymptomaticSpreader - COVID-19 -- region dependent
 
 
 % Measured parameters
@@ -41,7 +43,7 @@ dd1 = 0.356907003;                      %rate of transition from asymptomatic to
 dd2 = 1/2.3;                            %rate of transition from asymptomatic to infected stage for SymptomaticSpreader - COVID
 g2 = 0.075;                             %removal rate for SymptomaticSpreader - COVID
 
-% POPULATION = 5110917;                   %population size of jurisdiction of interest
+% POPULATION = 5110917;                 %population size of jurisdiction of interest
 
 % Phase 2 Population
 POPULATION = 5110894.661;
@@ -49,8 +51,8 @@ POPULATION = 5110894.661;
 
 % Set up the population
 N_0 = round(POPULATION/1);                      % Simulate for a fraction of total population
-N1_0 = round(fraction_silent*N_0);                 % Silent spreaders at t0
-N2_0 = round((1-fraction_silent)*N_0);             % Symptomatic spreaders at t0
+N1_0 = round(fraction_silent*N_0);              % Silent spreaders at t0
+N2_0 = round((1-fraction_silent)*N_0);          % Symptomatic spreaders at t0
 
 % For ICU bed availability, need fraction symptomatic (I2) who end up in
 % ICU
