@@ -1,6 +1,8 @@
-%UPDATED Mar 24, 2021 
-%The purpose of this code is plot the SEAIR model compartments according to
-%the fitted parameters of phase 1 in BC. 
+% Written by: Karen K. L. Hwang, Christina J. Edholm, Omar Saucedo, Linda J. S. Allen, Nika Shakiba
+
+% Mar 24, 2021 
+% The purpose of this code is plot the SEAIR model compartments according to
+% the fitted parameters of phase 1 in BC. 
 
 close all 
 clear all 
